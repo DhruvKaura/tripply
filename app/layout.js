@@ -14,6 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logos/tripply-icon.png" sizes="any" />
+      </head>
       <body
         className={`${inter.className}`}
       >
