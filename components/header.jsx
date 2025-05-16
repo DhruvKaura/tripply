@@ -57,7 +57,7 @@ const Header = () => {
 
           <Authenticated>
             <Link href="/dashboard">
-              <Button variant="outline" className="hidden md:inline-flex items-center gap-2 hover:text-purple-600 hover:border-purple-600 transition">
+              <Button variant="outline" className="hidden md:inline-flex items-center gap-2 cursor-pointer hover:text-purple-600 hover:border-purple-600 transition">
                 <LayoutDashboard className="h-4 w-4"/>Dashboard
                   {/* Dashboard Icon*/}
               </Button>
@@ -65,8 +65,9 @@ const Header = () => {
               {/*Button only on mobile screen*/ }
               <Button variant={'ghost'} className="md:hidden w-10 h-10 p-0">
                 <LayoutDashboard className="w-4 h-4"/>
-              </Button>
+              </Button> 
             </Link>
+            <UserButton/>
           </Authenticated>
 
           {/* If the user is not signed in yet */}
