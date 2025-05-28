@@ -32,4 +32,28 @@ export default defineSchema({
     .index("by_group",["groupId"])
     .index("by_use_and_group",["paidByUserId","groupId"])
     .index("by_date",["date"]),
+
+    groups:defineTable({
+        name:v.string(),
+        description: v.optional(v.string()),
+        createdBy: v.id("users"),
+        members: v.array(
+            v.object({
+                userId:v.id("users"),
+                role:v.string(),
+                joinedAt: v.number(),
+            })
+        ),
+    }),
+
+    settlements : defineTable({
+        amount: v.number(),
+        note: v.optional(v.string()),
+        date: v.number(),
+        paidByUserId: v.id("users"),
+        receivedByUserId: v.id("users"),
+        groupId: v.optional(v.id("groups")),
+        relatedExpenseIds: v.optional(v.array(v.id("expenses"))),
+        createdBy: v.id("users"),
+    }),
 });
