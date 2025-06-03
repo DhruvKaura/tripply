@@ -55,5 +55,9 @@ export default defineSchema({
         groupId: v.optional(v.id("groups")),
         relatedExpenseIds: v.optional(v.array(v.id("expenses"))),
         createdBy: v.id("users"),
-    }),
+    })
+    .index("by_group",["groupId"])
+    .index("by_user_and_group",["paidByUserId", "groupId"])
+    .index("by_receiver_and_group", ["receivedByUserId", "groupId"])
+    .index("by_date", ["date"]), //this is all done to make the search or sort by using these indexes
 });
